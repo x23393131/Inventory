@@ -140,7 +140,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Add to bottom of settings.py
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://your-heroku-app.herokuapp.com',
