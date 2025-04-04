@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'inventory.apps.InventoryConfig',
     'crispy_forms',
+    
 ]
 
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'inventory_system.urls'
@@ -85,6 +87,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 
 # Password validation
@@ -140,7 +144,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://your-heroku-app.herokuapp.com',
-    'https://*.vfs.cloud9.us-east-1.amazonaws.com'
+    'https://*.vfs.cloud9.us-east-1.amazonaws.com',
 ]
 
 # Set debug based on environment
