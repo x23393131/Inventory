@@ -8,7 +8,7 @@ User = get_user_model()
 class TestProductModel:
     def test_product_creation(self):
         user = User.objects.create_user(username='testuser', password='12345')
-        product = Product.objects.create(
+        product = Product(
             name='Test Product',
             price=9.99,
             quantity=10,

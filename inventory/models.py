@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User  # This should be fine if you're using the default User model
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
