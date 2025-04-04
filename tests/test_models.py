@@ -1,23 +1,18 @@
-from django.test import TestCase
-from django.contrib.auth.models import User
-from inventory.models import Product  # Absolute import
+import pytest
+from django.contrib.auth import get_user_model
+from inventory.models import Product
 
-class ProductModelTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        cls.test_user = User.objects.create_user(
-            username='testuser', 
-            password='12345'
-        )
-        cls.product = Product.objects.create(
+User = get_user_model()
+
+@pytest.mark.django_db
+class TestProductModel:
+    def test_product_creation(self):
+        user = User.objects.create_user(username='testuser', password='12345')
+        product = Product.objects.create(
             name='Test Product',
-            description='Test Description',
             price=9.99,
             quantity=10,
-            created_by=cls.test_user
+            created_by=user
         )
-
-    def test_product_content(self):
-        product = Product.objects.get(id=self.product.id)  # Use the created product's ID
-        self.assertEqual(product.name, 'Test Product')
-        self.assertEqual(str(product), 'Test Product')
+        assert product.name == 'Test Product'
+        assert str(product) == 'Test Product'

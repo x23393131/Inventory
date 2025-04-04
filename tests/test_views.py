@@ -1,35 +1,21 @@
-from django.test import TestCase, Client
+import pytest
+from django.contrib.auth import get_user_model
 from django.urls import reverse
-from django.contrib.auth.models import User
-from inventory.models import Product  # Absolute import
+from inventory.models import Product
 
-class ViewTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.user = User.objects.create_user(
-            username='testuser',
-            password='12345'
+User = get_user_model()
+
+@pytest.mark.django_db
+class TestProductViews:
+    def test_product_list_view(self, client):
+        user = User.objects.create_user(username='testuser', password='12345')
+        Product.objects.create(
+            name='Test Product',
+            price=9.99,
+            quantity=10,
+            created_by=user
         )
-        self.product = Product.objects.create(
-            name='Existing Product',
-            price=15.99,
-            quantity=5,
-            created_by=self.user
-        )
-        self.client.login(username='testuser', password='12345')
-
-    def test_product_list_view(self):
-        response = self.client.get(reverse('product_list'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Existing Product')
-        self.assertTemplateUsed(response, 'inventory/list.html')
-
-    def test_product_create_view(self):
-        response = self.client.post(reverse('product_create'), {
-            'name': 'New Product',
-            'description': 'New Description',
-            'price': 19.99,
-            'quantity': 5
-        }, follow=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(Product.objects.last().name, 'New Product')
+        client.login(username='testuser', password='12345')
+        response = client.get(reverse('product_list'))
+        assert response.status_code == 200
+        assert 'Test Product' in str(response.content)

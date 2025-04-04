@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from .forms import RegisterForm, ProductForm  
 from .models import Product
 
@@ -12,9 +12,13 @@ def register_view(request):
             login(request, user)
             return redirect('product_list')
     else:
-        form = RegisterForm()  # Moved outside of the if-valid block
+        form = RegisterForm()
     
     return render(request, 'registration/register.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')  # Assuming you have a URL named 'login'
 
 @login_required
 def dashboard_view(request):

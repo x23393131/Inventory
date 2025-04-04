@@ -80,10 +80,16 @@ WSGI_APPLICATION = 'inventory_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Default DB name 
+        'USER': 'admin',     # RDS master username
+        'PASSWORD': '10iamthebest10',  # RDS master password
+        'HOST': 'django-db.ceoqpfogzcr4.us-east-1.rds.amazonaws.com',  # RDS endpoint
+        'PORT': '5432',     # Default PostgreSQL port
     }
 }
 
