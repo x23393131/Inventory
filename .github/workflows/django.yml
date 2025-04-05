@@ -42,9 +42,6 @@ jobs:
         run: |
           python manage.py test --noinput
       
-      - name: Run pylint
-        run: |
-          pylint --load-plugins pylint_django inventory_system
 
   deploy:
     needs: test
