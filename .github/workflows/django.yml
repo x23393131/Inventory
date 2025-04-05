@@ -44,7 +44,7 @@ jobs:
       
       - name: Run pylint
         run: |
-          pylint --load-plugins pylint_django furniture_platform
+          pylint --load-plugins pylint_django inventory_system
 
   deploy:
     needs: test
