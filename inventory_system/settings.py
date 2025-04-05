@@ -136,8 +136,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.vfs.cloud9.us-east-1.amazonaws.com',
-    'https://*.cloud9.us-east-1.amazonaws.com',
+    'https://*.vfs.cloud9.eu-west-1.amazonaws.com',
+    'https://*.cloud9.eu-west-1.amazonaws.com',
     'https://' + os.environ.get('C9_HOSTNAME', '')  # For your specific Cloud9 instance
 ]
 
@@ -147,7 +147,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://your-heroku-app.herokuapp.com',
-    'https://*.vfs.cloud9.us-east-1.amazonaws.com',
+    'https://*.vfs.cloud9.eu-west-1.amazonaws.com',
 ]
 
 # Set debug based on environment
