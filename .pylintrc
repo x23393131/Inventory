@@ -1,0 +1,15 @@
+[MASTER]
+
+ignore=venv,.git,__pycache__,migrations
+
+load-plugins=pylint_django
+ 
+[MESSAGES CONTROL]
+
+disable=all  # Optional if using --disable in CLI
+ 
+[FORMAT]
+
+max-line-length=120
+
+ 
