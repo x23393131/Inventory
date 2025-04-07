@@ -14,7 +14,11 @@ pillow==11.1.0
 
 pytest==8.3.5
 
-pytest-django==4.11.1
+pytest-django==4.11.
+
+pylint
+
+pylint_django
 
 # Forms
 

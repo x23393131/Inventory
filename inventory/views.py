@@ -18,7 +18,7 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  # Assuming you have a URL named 'login'
+    return redirect('login')
 
 @login_required
 def dashboard_view(request):

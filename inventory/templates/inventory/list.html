@@ -19,7 +19,7 @@
         {% for product in products %}
         <tr>
             <td>{{ product.name }}</td>
-            <td>${{ product.price }}</td>
+            <td>€{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
             <td>
                 <a href="{% url 'product_detail' product.pk %}" class="btn btn-sm btn-info">View</a>
