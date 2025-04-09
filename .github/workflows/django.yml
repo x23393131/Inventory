@@ -47,7 +47,8 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
-          pip install pylint
+          pip install -r requirements.txt
+          pip install pylint pylint-django
           pylint --rcfile=.pylintrc --disable=R,C inventory/ inventory_system/ --fail-under=8.0
 
   test:
