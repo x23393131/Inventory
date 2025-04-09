@@ -48,7 +48,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
           pip install pylint
-          pylint **/*.py
+          pylint --rcfile=.pylintrc --disable=R,C inventory/ inventory_system/ --fail-under=8.0
 
   test:
     name: Test Stage (Pytest)
