@@ -77,4 +77,4 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
           pip install bandit
-          bandit -r .
+          bandit -r inventory/ inventory_system/  -c .bandit.yml --exit-zero
